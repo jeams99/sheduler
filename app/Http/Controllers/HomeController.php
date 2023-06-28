@@ -28,12 +28,9 @@ class HomeController extends Controller
         $data = [];
         foreach($events as $value) {
             $data[] = [
-                'id' => $value->id,
-                'title' => $value->title,
-                'start' => $value->start,
-                'end'   => $value->end,
-                'coordinates' => $value->coordinates,
-                'view' => $value->view
+                "title"=>$value->title,
+                "start"=>$value->start,
+                "end"=>$value->end
             ];
         }
         return view('home',['events'=>$data]);
