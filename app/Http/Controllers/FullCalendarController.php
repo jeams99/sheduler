@@ -12,15 +12,14 @@ class FullCalendarController extends Controller
             "title" => $request->title,
             "start" => $request->start,
             "end" => $request->end,
-			"coordinates" => $request->coordinates,
-			"view" => $request->view
+		    "gmt_start" => $request->gmt_start,
+			"gmt_end" => $request->gmt_end,
         );
 		$events = \DB::table('events')->insert($data);
 		return response()->json($events);
     }
 
-    /*public function deleteEvent(Request $request){
-        $event = Event::find($request->id);
-        return $event->delete();
-    }*/
+    public function deleteEvent(Request $request){
+       return  \DB::table('events')->where('gmt_start',$request->start)->delete();
+    }
 }

@@ -16,8 +16,8 @@ return new class extends Migration
 			$table->string('title');
             $table->string('start');
             $table->string('end');
-            $table->string('coordinates');
-            $table->string('view');
+            $table->string('gmt_start');
+            $table->string('gmt_end');
         });
     }
 
