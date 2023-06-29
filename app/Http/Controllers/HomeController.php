@@ -30,7 +30,8 @@ class HomeController extends Controller
             $data[] = [
                 "title"=>$value->title,
                 "start"=>$value->start,
-                "end"=>$value->end
+                "end"=>$value->end,
+                "color"=>$value->color
             ];
         }
         return view('home',['events'=>$data]);
