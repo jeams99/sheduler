@@ -14,6 +14,7 @@ class FullCalendarController extends Controller
             "end" => $request->end,
 		    "gmt_start" => $request->gmt_start,
 			"gmt_end" => $request->gmt_end,
+            "color" => $request->color
         );
 		$events = \DB::table('events')->insert($data);
 		return response()->json($events);

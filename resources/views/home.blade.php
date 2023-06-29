@@ -11,7 +11,9 @@
                         <div class="msg_error"></div>
                         <div class="msg_success_remove"></div>
                         <div class="msg_error_remove"></div>
-                        <p><button class="btn btn-primary btn-sm" id="event">{{'Save Event'}}</button></p>
+                        <button style="display: none;" id="event"></button>
+                        <h4>{{'Event Background'}}&nbsp;<i class="fa fa-paint-brush" aria-hidden="true"></i></h4>
+                        <p><input class="color-picker cp-lg hidden" id="background"  value="#0e76a8"></p>
                         <div id='calendar'></div>
                     </div>
                 </div>
@@ -22,9 +24,9 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         let calendarEl = document.getElementById('calendar');
+        console.log(@json($events));
         let calendar = new FullCalendar.Calendar(calendarEl, {
             events:@json($events),
-            eventColor: '#378006',
             themeSystem: 'bootstrap5',
             initialView: 'timeGridWeek',
             editable: true,
@@ -52,7 +54,7 @@
                 $.ajax({
                     url: '{{url("/ajax_create_event")}}',
                     type: "POST",
-                    data: {_token: '{!! csrf_token() !!}', title:title, start: start, end:end, gmt_start: gmt_start, gmt_end:gmt_end},
+                    data: {_token: '{!! csrf_token() !!}', title:title, start: start, end:end, gmt_start: gmt_start, gmt_end:gmt_end, color: $("#background").val()},
                     dataType: "json",
                     success: function () {
                         $('.msg_success_remove').append('Event has been saved successfully').show(0).fadeOut(7000).css({

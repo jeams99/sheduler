@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('end');
             $table->string('gmt_start');
             $table->string('gmt_end');
+			$table->string('color');
         });
     }
 
